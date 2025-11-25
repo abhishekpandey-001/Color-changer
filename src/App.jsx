@@ -1,15 +1,29 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Buttons from './components/Buttons'
+import Display from './components/Display'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState('transparent')
+
+  const colors = ['red', 'lightseagreen', 'blue', 'orange', 'pink', 'yellow']
+
+  function changeColor(){
+    console.log("color changed")
+  }
 
   return (
-    <>
-    <h1></h1>
-    </>
+    <div>
+      <h1>🎨 Dynamic color changer</h1>
+      <div className='flex mt-5'>
+        {
+          colors.map((items) => {
+            return (<Buttons colors={items} key={items} func = {setCount}/>)
+          })
+        }
+      </div>
+      <Display count = {count}/>
+    </div>
   )
 }
 
